@@ -1,25 +1,69 @@
-.carrousel__ouvrir {
-  background-color: hsl(218, 17%, 72%);
-  border-radius: 4px;
-  cursor: pointer;
-  padding: 0.3rem;
-}
-
 .carrousel {
   font-family: "Source Sans 3", sans-serif;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  border: 0px solid hsl(218, 17%, 52%);
+  background-color: aqua;
+  transform: scale(0);
+  transition: transform 500ms;
+  z-index: 1000;
+}
+@media screen and (min-width: 992px) {
+  .carrousel {
+    width: 50%;
+    height: 50%;
+    top: 25%;
+    left: 25%;
+    border: 1px solid hsl(218, 17%, 52%);
+  }
 }
 .carrousel .carrousel__x {
-  background-color: transparent;
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  background-color: pink;
   font-size: clamp(1.2rem, -0.3125rem + 2.8vw, 1.6rem);
   border: 1px solid hsl(218, 17%, 52%);
   color: hsl(218, 17%, 52%);
   border-radius: 4px;
   cursor: pointer;
   padding: 0.1rem 0.4rem;
+  z-index: 2000;
 }
 @media screen and (min-width: 992px) {
   .carrousel .carrousel__x {
     border: 1px solid hsl(235, 21%, 14%);
-    color: hsl(235, 21%, 52%);
+    color: hsl(235, 21%, 40%);
+    top: 5%;
+    right: 5%;
   }
+}
+.carrousel .carrousel__figure {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 0;
+  left: 0;
+}
+.carrousel .carrousel__img {
+  display: block;
+  position: absolute;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+}
+.carrousel .carrousel__img:nth-of-type(1) {
+  opacity: 1;
+}
+
+.carrousel--activer {
+  transform: scale(1);
+}
+
+.carrousel--activer {
+  transform: scale(1);
 }/*# sourceMappingURL=style.css.map */
