@@ -1,0 +1,35 @@
+.carrousel__ouvrir {
+  background-color: hsl(218deg, 17%, 72%);
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0.3rem; 
+}
+
+.carrousel {
+
+  font-family: 'Source Sans 3', sans-serif;
+  
+  .carrousel__x {
+    background-color: transparent;
+    font-size: clamp(1.2rem, -0.3125rem + 2.8vw, 1.6rem);
+    border: 1px solid hsl(218deg, 17%, 52%);
+    color: hsl(218deg, 17%, 52%);
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0.1rem 0.4rem; 
+
+    @media screen and (min-width: 992px) {
+      border: 1px solid hsl(235deg, 21%, 14%);
+      color: hsl(235deg, 21%, 52%);
+    }
+  }
+
+  .carrousel__figure {
+
+  }
+
+  .carrousel__form {
+
+  }
+
+}

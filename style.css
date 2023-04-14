@@ -1,4 +1,25 @@
-.carrousel {
-  /* Boîte modale */
-  background-color: bisque;
+.carrousel__ouvrir {
+  background-color: hsl(218, 17%, 72%);
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0.3rem;
 }
+
+.carrousel {
+  font-family: "Source Sans 3", sans-serif;
+}
+.carrousel .carrousel__x {
+  background-color: transparent;
+  font-size: clamp(1.2rem, -0.3125rem + 2.8vw, 1.6rem);
+  border: 1px solid hsl(218, 17%, 52%);
+  color: hsl(218, 17%, 52%);
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0.1rem 0.4rem;
+}
+@media screen and (min-width: 992px) {
+  .carrousel .carrousel__x {
+    border: 1px solid hsl(235, 21%, 14%);
+    color: hsl(235, 21%, 52%);
+  }
+}/*# sourceMappingURL=style.css.map */
