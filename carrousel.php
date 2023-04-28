@@ -33,8 +33,9 @@
     <div class="carrousel_fond">
     <div class="carrousel">
     <button class="carrousel__x"> X </button>
-    <figure class="carrousel__figure"></figure>
+    <figure class="carrousel__figure">
     <form class="carrousel__form"></form>
+    </figure>
     </div>
     </div> <!-- Fin du carrousel -->'
   );
