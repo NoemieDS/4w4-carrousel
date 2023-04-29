@@ -9,8 +9,7 @@
 
   
   function mon_enqueue_css_js() {
-        
-    $version_css = filemtime(plugin_dir_path( __FILE__ ) . "style.css");
+   $version_css = filemtime(plugin_dir_path( __FILE__ ) . "style.css");
     $version_js = filemtime(plugin_dir_path(__FILE__) . "js/carrousel.js");
 
     wp_enqueue_style(   'nds_plugin_carrousel_css',
@@ -28,17 +27,17 @@
 
   add_action('wp_enqueue_scripts', 'mon_enqueue_css_js');
 
-  function creation_carrousel() {
-    return ('<button class="carrousel__ouvrir">Ouvrir le carrousel</button>
-    <div class="carrousel_fond">
-    <div class="carrousel">
-    <button class="carrousel__x"> X </button>
-    <figure class="carrousel__figure">
-    <form class="carrousel__form"></form>
-    </figure>
-    </div>
-    </div> <!-- Fin du carrousel -->'
-  );
+  function creation_carrousel()
+  {
+   
+      return "<button class='carrousel__ouvrir'>Ouvrir le carrousel</button>
+      <div class='carrousel'>
+      <button class='carrousel__x'>X</button>
+      <figure class='carrousel__figure'>
+       </figure>
+      <form class='carrousel__form'></form>
+      </div> <!-- fin du carrousel -->
+      ";
   }
   add_shortcode('nds_carrousel', 'creation_carrousel');
   ?>
