@@ -17,11 +17,11 @@
 }
 .carrousel .carrousel__x {
   align-self: flex-end;
-  margin: 2.6rem 2rem 0 0;
+  margin: 2rem 2rem 0 0;
   background-color: hsl(235, 21%, 10%);
   border: 1px solid hsl(218, 17%, 32%);
   color: hsl(235, 21%, 70%);
-  font-size: clamp(1.2rem, -0.3125rem + 2.8vw, 1.6rem);
+  font-size: 1.4rem;
   cursor: pointer;
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
@@ -30,45 +30,40 @@
 @media screen and (min-width: 992px) {
   .carrousel .carrousel__x {
     position: absolute;
-    top: 1.4rem;
-    left: 50%;
-    margin-left: 460px;
+    top: 0;
+    left: 69%;
   }
 }
 .carrousel .carrousel__figure {
   position: absolute;
-  width: 100%;
-  height: auto;
-  top: 5rem;
+  top: 5.5rem;
   left: 0;
-  max-width: 1024px;
-  max-height: 1024px;
   left: 50%;
   transform: translateX(-50%);
-}
-@media screen and (min-width: 992px) {
-  .carrousel .carrousel__figure {
-    top: 7rem;
-  }
+  width: 100%;
+  height: auto;
 }
 .carrousel .carrousel__img {
   display: block;
   position: absolute;
   object-fit: cover;
-  width: 100%;
-  height: auto;
   opacity: 0;
-  max-width: 1024px;
-  max-height: 1024px;
   left: 50%;
   transform: translateX(-50%);
   padding: 0;
   margin: 0;
 }
+@media screen and (min-width: 992px) {
+  .carrousel .carrousel__img {
+    max-width: 1024px;
+    max-height: 85vh;
+  }
+}
 .carrousel .carrousel__form {
   position: absolute;
   width: 100%;
-  height: 5rem;
+  height: 4.5rem;
+  padding-bottom: 0.5rem;
   top: 0;
   text-align: center;
   background-color: hsl(235, 21%, 10%);
@@ -76,13 +71,6 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
-}
-@media screen and (min-width: 992px) {
-  .carrousel .carrousel__form {
-    height: 7rem;
-    max-width: 1024px;
-    text-align: center;
-  }
 }
 .carrousel .carrousel__form .carrousel__rad {
   margin: 0.8rem;
