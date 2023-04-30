@@ -79,20 +79,26 @@
   accent-color: hsl(235, 21%, 30%);
   border: 4px solid hsl(235, 21%, 14%);
 }
-.carrousel .carrousel__form .fleche {
-  width: 0;
-  height: 0;
+.carrousel .fleche {
+  position: absolute;
+  top: 200%;
+  width: 4rem;
+  height: 2rem;
+  background-color: aqua;
   border-top: 15px solid transparent;
   border-bottom: 15px solid transparent;
   margin: 0.4rem;
+  z-index: 8000;
 }
-.carrousel .carrousel__form .carrousel__fleche_gauche {
-  order: -1;
+.carrousel .carrousel__fleche_gauche {
+  background-color: chartreuse;
+  left: 10rem;
   border-right: 15px solid hsl(235, 21%, 70%);
   margin-right: 2rem;
 }
-.carrousel .carrousel__form .carrousel__fleche_droite {
-  order: 1;
+.carrousel .carrousel__fleche_droite {
+  right: 10rem;
+  background-color: rgb(188, 31, 151);
   border-left: 15px solid hsl(235, 21%, 70%);
   margin-left: 2rem;
 }

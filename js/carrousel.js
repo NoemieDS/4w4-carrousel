@@ -4,11 +4,16 @@
   let carrouselX = document.querySelector(".carrousel__x");
   let carrouselFigure = document.querySelector(".carrousel__figure");
   let carrouselForm = document.querySelector(".carrousel__form");
+  let visuelFlecheGauche = document.querySelector(".carrousel__fleche_gauche");
+  let visuelFlecheDroite = document.querySelector(".carrousel__fleche_droite");
 
   let galerie = document.querySelector(".galerie");
   let galerieImg = galerie.querySelectorAll("img");
 
-  let compteur = 0;
+  // Variables pour la position des boutons radios et pour faire avancer les images du carrousel
+  let position = 0;
+  let index = 0;
+  let ancienIndex = null;
 
   /* ----------------------------------------------------  ouvrir la boîte modale 
 -------- Avec le bouton / pour tester -----------------------------------------
@@ -19,22 +24,14 @@ AfficherImageCarrousel();
 })
 */
 
-
   /* ----------------------------------------------------  fermer la boîte modale */
   carrouselX.addEventListener("mousedown", function () {
     carrousel.classList.remove("carrousel--activer");
-    compteur = 0;
+    document.removeEventListener("keydown", surveillerTouche);
   });
 
   /**********
    *************************  Pour chaque image de la galerie l'ajouter dans le carrousel */
-
-  // Variables pour la position des boutons radios et pour faire avancer les images du carrousel
-  let position = 0;
-  let index = 0;
-  let ancienIndex = null;
-
-
 
   /* -- boucle qui permet construire le carrousel */
   for (const elt of galerieImg) {
@@ -45,41 +42,53 @@ AfficherImageCarrousel();
       si le carrousel n'est pas déjà ouvert, il faut lui ajouter
       la classe "carrousel--activer"
       */
-     
-     if (!elt.classList.contains("carrousel--activer")) {
-       carrousel.classList.add("carrousel--activer");
+      if (!elt.classList.contains("carrousel--activer")) {
+        carrousel.classList.add("carrousel--activer");
       }
-      
+
+      /* On met un écouteur sur les touches du clavier */
+      document.addEventListener("keydown", surveillerTouche);
+
       index = e.target.dataset.index;
       carrouselForm.children[index].checked = true;
-      AfficherImageCarrousel();
-      AjouterFlecheGauche();
-      AjouterFlecheDroite();
+      afficherImageCarrousel();
+      //document.removeEventListener("keydown", surveillerTouche);
+      visuelFlecheGauche.addEventListener("mousedown", reculerImage);
+      visuelFlecheDroite.addEventListener("mousedown", avancerImage);
     });
-    AjouterUneImageDansCaroussel(elt);
-    AjouterUnRBoutonRadio();
+    ajouterUneImageDansCaroussel(elt);
+    ajouterUnBoutonRadio();
   }
-
 
   /**
    * Création dynamique d'une image pour le carousel
    * @param {*} elt une image de la galerie
    */
 
-  function AjouterUneImageDansCaroussel(elt) {
+  function ajouterUneImageDansCaroussel(elt) {
     let img = document.createElement("img");
     img.classList.add("carrousel__img");
     img.src = elt.src;
     //console.log(img.src)
     carrouselFigure.appendChild(img);
-    compteur++;
   }
 
+  /**
+   * Afficher la nouvelle image du carrousel
+   */
+  function afficherImageCarrousel() {
+    if (ancienIndex != null) {
+      carrouselFigure.children[ancienIndex].style.opacity = "0";
+    }
+    carrouselFigure.children[index].style.opacity = "1";
+    ancienIndex = index;
+  }
   /**
    * Fonction pour ajouter des boutons radio
    * et avancer les images
    */
-  function AjouterUnRBoutonRadio() {
+
+  function ajouterUnBoutonRadio() {
     let rad = document.createElement("input");
     rad.setAttribute("type", "radio");
     rad.setAttribute("name", "carrousel__rad");
@@ -88,69 +97,41 @@ AfficherImageCarrousel();
     rad.addEventListener("mousedown", function () {
       // console.log(this.dataset.index);
       index = this.dataset.index;
-      AfficherImageCarrousel();
+      afficherImageCarrousel();
     });
 
     position = position + 1;
     carrouselForm.append(rad);
   }
 
-   /**
-   * Fonction pour ajouter une flèche à droite
-   * et reculer les images
+  /**
+   * Fonctions pour faire avancer ou reculer les images avec les touches du clavier
    */
-   function AjouterFlecheDroite() {
-    let flecheDroite = document.createElement("div");
-    flecheDroite.setAttribute("name", "carrousel__fleche_droite");
-    flecheDroite.classList.add("carrousel__fleche_droite");
-    flecheDroite.classList.add("fleche");
-    flecheDroite.dataset.index = position;
-    flecheDroite.addEventListener("mousedown", function () {
-    index = this.dataset.index;
-    console.log(this.dataset.index);
-    AfficherImageCarrousel();
-    });
-    position = position + 1;
-    carrouselForm.append(flecheDroite);
-  /*  if ((index = compteur)) {
-      position = compteur;
-    }*/
 
+  function surveillerTouche(event) {
+    event = event || window.event;
+    if (event.keyCode == 37) {
+      reculerImage();
+    } else if ((event.keyCode = 39)) {
+      avancerImage();
+    }
   }
 
-  /**
-   * Fonction pour ajouter une flèche à gauche
-   * et reculer les images
-   */
-  function AjouterFlecheGauche() {
-    let flecheGauche = document.createElement("div");
-    flecheGauche.setAttribute("name", "carrousel__fleche_gauche");
-    flecheGauche.classList.add("carrousel__fleche_gauche");
-    flecheGauche.classList.add("fleche");
-    flecheGauche.dataset.index = position;
-    flecheGauche.addEventListener("mousedown", function () {
-    index = this.dataset.index;
-    AfficherImageCarrousel();
-    });
-    position = position - 1;
-    carrouselForm.append(flecheGauche);
-   if ((index = -1)) {
-      position = compteur;
+  function reculerImage() {
+    index--;
+    if (index < 0) {
+      index = position - 1;
     }
-
+    afficherImageCarrousel();
+    carrouselForm.children[index].checked = true;
   }
 
- 
-  /**
-   * Afficher la nouvelle image du carrousel
-   */
-
-  function AfficherImageCarrousel() {
-
-    if (ancienIndex != null) {
-      carrouselFigure.children[ancienIndex].style.opacity = "0";
+  function avancerImage() {
+    index++;
+    if (index > position - 1) {
+      index = 0;
     }
-    carrouselFigure.children[index].style.opacity = "1";
-    ancienIndex = index;
+    afficherImageCarrousel();
+    carrouselForm.children[index].checked = true;
   }
 })();
