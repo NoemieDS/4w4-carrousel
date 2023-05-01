@@ -52,7 +52,6 @@ AfficherImageCarrousel();
       index = e.target.dataset.index;
       carrouselForm.children[index].checked = true;
       afficherImageCarrousel();
-      //document.removeEventListener("keydown", surveillerTouche);
       visuelFlecheGauche.addEventListener("mousedown", reculerImage);
       visuelFlecheDroite.addEventListener("mousedown", avancerImage);
     });
@@ -104,15 +103,16 @@ AfficherImageCarrousel();
     carrouselForm.append(rad);
   }
 
+
   /**
    * Fonctions pour faire avancer ou reculer les images avec les touches du clavier
    */
 
   function surveillerTouche(event) {
-    event = event || window.event;
-    if (event.keyCode == 37) {
+   // event = event || window.event;
+    if (event.keyCode == 37 || event.keyCode == 65) { //flèche gauche ou A
       reculerImage();
-    } else if ((event.keyCode = 39)) {
+    }else if (event.keyCode = 39|| event.keyCode == 68) { //flèche droite ou D
       avancerImage();
     }
   }
