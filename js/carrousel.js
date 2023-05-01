@@ -24,6 +24,7 @@ AfficherImageCarrousel();
 })
 */
 
+
   /* ----------------------------------------------------  fermer la boîte modale */
   carrouselX.addEventListener("mousedown", function () {
     carrousel.classList.remove("carrousel--activer");
@@ -112,7 +113,7 @@ AfficherImageCarrousel();
    // event = event || window.event;
     if (event.keyCode == 37 || event.keyCode == 65) { //flèche gauche ou A
       reculerImage();
-    }else if (event.keyCode = 39|| event.keyCode == 68) { //flèche droite ou D
+    }else if (event.keyCode == 39|| event.keyCode == 68) { //flèche droite ou D
       avancerImage();
     }
   }
