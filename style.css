@@ -31,7 +31,7 @@
 }
 @media screen and (min-width: 992px) {
   .carrousel .carrousel__x {
-    left: 70%;
+    right: 28%;
     top: 6%;
   }
 }
