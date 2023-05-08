@@ -29,8 +29,18 @@
 
   function creation_carrousel()
   {
+
+    return "<div class='carrousel'>
+            <button class='carrousel__x'>X</button>
+            <div class='fleche carrousel__fleche_gauche'></div>
+            <div class='fleche carrousel__fleche_droite'></div>
+            <figure class='carrousel__figure'></figure>
+            <form class='carrousel__form'></form>
+            </div> <!-- fin du carrousel -->
+    ";
+
    
-      return "<button class='carrousel__ouvrir'>Ouvrir le carrousel</button>
+    /*  return "<button class='carrousel__ouvrir'>Ouvrir le carrousel</button>
       <div class='carrousel'>
       <button class='carrousel__x'>X</button>
       <div class='fleche carrousel__fleche_gauche'></div>
@@ -40,6 +50,6 @@
       <form class='carrousel__form'></form>
       </div> <!-- fin du carrousel -->
       ";
+      */
   }
   add_shortcode('nds_carrousel', 'creation_carrousel');
-  ?>

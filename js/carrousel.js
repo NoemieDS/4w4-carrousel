@@ -1,11 +1,11 @@
 (function () {
   //let carrouselOuvrir = document.querySelector(".carrousel__ouvrir");
-  let carrousel = document.querySelector(".carrousel");
-  let carrouselX = document.querySelector(".carrousel__x");
-  let carrouselFigure = document.querySelector(".carrousel__figure");
-  let carrouselForm = document.querySelector(".carrousel__form");
-  let visuelFlecheGauche = document.querySelector(".carrousel__fleche_gauche");
-  let visuelFlecheDroite = document.querySelector(".carrousel__fleche_droite");
+  let carrousel = document.querySelector(".carrousel"),
+      carrouselX = document.querySelector(".carrousel__x"),
+      carrouselFigure = document.querySelector(".carrousel__figure"),
+      carrouselForm = document.querySelector(".carrousel__form"),
+      visuelFlecheGauche = document.querySelector(".carrousel__fleche_gauche"),
+      visuelFlecheDroite = document.querySelector(".carrousel__fleche_droite");
 
   let galerie = document.querySelector(".galerie");
   let galerieImg = galerie.querySelectorAll("img");
@@ -66,11 +66,18 @@ AfficherImageCarrousel();
    */
 
   function ajouterUneImageDansCaroussel(elt) {
+    /*
     let img = document.createElement("img");
     img.classList.add("carrousel__img");
     img.src = elt.src;
-    //console.log(img.src)
+    console.log(img.src)
     carrouselFigure.appendChild(img);
+    */
+
+
+    let elImg = `<img src=${elt.src} class="carrousel__img" alt="">`;
+    carrouselFigure.insertAdjacentHTML('beforeend', elImg);
+
   }
 
   /**
@@ -78,11 +85,23 @@ AfficherImageCarrousel();
    */
   function afficherImageCarrousel() {
     if (ancienIndex != null) {
-      carrouselFigure.children[ancienIndex].style.opacity = "0";
+        carrouselFigure.children[ancienIndex].style.opacity = "0";
     }
+
     carrouselFigure.children[index].style.opacity = "1";
     ancienIndex = index;
+    //console.log(carrouselFigure.children[index].naturalWidth);
+    //console.log(carrouselFigure.children[index].naturalHeight);
+
+    let imgWidth = carrouselFigure.children[index].naturalWidth,
+        imgHeight = carrouselFigure.children[index].naturalHeight,
+        ratio = `${imgWidth / imgHeight * 100}%`;
+
+    document.documentElement.style.setProperty('--ratio', ratio)   
   }
+
+
+
   /**
    * Fonction pour ajouter des boutons radio
    * et avancer les images
