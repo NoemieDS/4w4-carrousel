@@ -3,37 +3,20 @@
   --ratio: 100%;
 }
 
-/*
-.carrousel__ouvrir {
-  display: none;
-}
-
-/*
 .carrousel {
   position: fixed;
-  width: 100vw;
-  height: 100vh;
-  max-width: 100vw;
-  max-height: 100vh;
-  top: 0;
-  left: 0;
-  background-color: hsla(235deg, 21%, 10%, 0.9);
-  transform: scale(0);
-  transition: transform 500ms;
-  z-index: 1000;
-*/
-.carrousel {
-  position: fixed;
-  right: 25%;
+  right: 0;
   top: 5%;
   transform: scale(0);
   transition: transform 0.5s;
-  width: 45vw;
-  z-index: 1000;
-  /*
-    @media screen and (min-width: 992px) {
-      width : 60vw;
-    }*/
+  width: 100vw;
+  z-index: 10000;
+}
+@media screen and (min-width: 992px) {
+  .carrousel {
+    right: 25%;
+    width: 50vw;
+  }
 }
 .carrousel:after {
   content: "";
@@ -52,11 +35,6 @@
   right: 3px;
   top: 3px;
   z-index: 2000;
-  /*
-      @media screen and (min-width: 992px) {
-        right: 30%;
-        top: 6%;
-      }*/
 }
 .carrousel .carrousel__figure {
   height: 100%;
@@ -64,10 +42,6 @@
   position: absolute;
   top: 0;
   width: 100%;
-  /*
-      @media screen and (min-width: 992px) {
-        top: 5%;
-      }*/
 }
 .carrousel .carrousel__img {
   display: block;
@@ -75,10 +49,6 @@
   opacity: 0;
   position: absolute;
   width: 100%;
-  /* @media screen and (min-width: 992px) {
-     max-width: 1024px;
-     max-height: 85vh;
-   }*/
 }
 .carrousel .carrousel__form {
   display: block;
@@ -106,10 +76,6 @@
   position: absolute;
   width: 2rem;
   z-index: 3000;
-  /*
-      @media screen and (min-width: 992px) {
-        bottom: 50%;
-      }*/
 }
 .carrousel .carrousel__fleche_gauche {
   background-color: hsla(235, 21%, 30%, 0.8);
@@ -176,13 +142,6 @@ img.carrousel__img {
   box-shadow: none;
 }
 
-.blocflex__galerie img.carrousel__img {
-  padding: 0;
-  margin: 0;
-  box-shadow: none;
-}
-@media screen and (min-width: 992px) {
-  .blocflex__galerie img.carrousel__img {
-    padding: 0;
-  }
+.carrousel__img--activer {
+  opacity: 1;
 }/*# sourceMappingURL=style.css.map */

@@ -1,11 +1,11 @@
 (function () {
   //let carrouselOuvrir = document.querySelector(".carrousel__ouvrir");
   let carrousel = document.querySelector(".carrousel"),
-      carrouselX = document.querySelector(".carrousel__x"),
-      carrouselFigure = document.querySelector(".carrousel__figure"),
-      carrouselForm = document.querySelector(".carrousel__form"),
-      visuelFlecheGauche = document.querySelector(".carrousel__fleche_gauche"),
-      visuelFlecheDroite = document.querySelector(".carrousel__fleche_droite");
+    carrouselX = document.querySelector(".carrousel__x"),
+    carrouselFigure = document.querySelector(".carrousel__figure"),
+    carrouselForm = document.querySelector(".carrousel__form"),
+    visuelFlecheGauche = document.querySelector(".carrousel__fleche_gauche"),
+    visuelFlecheDroite = document.querySelector(".carrousel__fleche_droite");
 
   let galerie = document.querySelector(".galerie");
   let galerieImg = galerie.querySelectorAll("img");
@@ -23,7 +23,6 @@ carrousel.classList.add('carrousel--activer');
 AfficherImageCarrousel();
 })
 */
-
 
   /* ----------------------------------------------------  fermer la boîte modale */
   carrouselX.addEventListener("mousedown", function () {
@@ -66,18 +65,14 @@ AfficherImageCarrousel();
    */
 
   function ajouterUneImageDansCaroussel(elt) {
-    /*
-    let img = document.createElement("img");
-    img.classList.add("carrousel__img");
-    img.src = elt.src;
-    console.log(img.src)
-    carrouselFigure.appendChild(img);
-    */
+    // On enlève 12 caractères au nom de fichier pour charger la version originale
+    //Et pas les 150x150.jpg
 
+    let elImg = `<img src=${
+      elt.src.substr(0, elt.src.length - 12) + ".jpg"
+    } class="carrousel__img" alt="">`;
 
-    let elImg = `<img src=${elt.src} class="carrousel__img" alt="">`;
-    carrouselFigure.insertAdjacentHTML('beforeend', elImg);
-
+    carrouselFigure.insertAdjacentHTML("beforeend", elImg);
   }
 
   /**
@@ -85,22 +80,30 @@ AfficherImageCarrousel();
    */
   function afficherImageCarrousel() {
     if (ancienIndex != null) {
-        carrouselFigure.children[ancienIndex].style.opacity = "0";
+
+  carrouselFigure.children[ancienIndex].style.opacity = "0";
+  // carrouselFigure.children[ancienIndex].classList.remove('carrousel__img--activer');
+
+      carrouselForm.children[ancienIndex].checked = false 
     }
 
-    carrouselFigure.children[index].style.opacity = "1";
+
+  carrouselFigure.children[index].style.opacity = "1";
+  //carrouselFigure.children[index].classList.add('carrousel__img--activer');
+
+
+   carrouselForm.children[index].checked = true
     ancienIndex = index;
+
     //console.log(carrouselFigure.children[index].naturalWidth);
     //console.log(carrouselFigure.children[index].naturalHeight);
 
     let imgWidth = carrouselFigure.children[index].naturalWidth,
-        imgHeight = carrouselFigure.children[index].naturalHeight,
-        ratio = `${imgWidth / imgHeight * 100}%`;
+      imgHeight = carrouselFigure.children[index].naturalHeight,
+      ratio = `${(imgWidth / imgHeight) * 100}%`;
 
-    document.documentElement.style.setProperty('--ratio', ratio)   
+    document.documentElement.style.setProperty("--ratio", ratio);
   }
-
-
 
   /**
    * Fonction pour ajouter des boutons radio
@@ -123,16 +126,17 @@ AfficherImageCarrousel();
     carrouselForm.append(rad);
   }
 
-
   /**
    * Fonctions pour faire avancer ou reculer les images avec les touches du clavier
    */
 
   function surveillerTouche(event) {
-   // event = event || window.event;
-    if (event.keyCode == 37 || event.keyCode == 65) { //flèche gauche ou A
+    // event = event || window.event;
+    if (event.keyCode == 37 || event.keyCode == 65) {
+      //flèche gauche ou A
       reculerImage();
-    }else if (event.keyCode == 39|| event.keyCode == 68) { //flèche droite ou D
+    } else if (event.keyCode == 39 || event.keyCode == 68) {
+      //flèche droite ou D
       avancerImage();
     }
   }
