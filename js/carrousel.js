@@ -67,10 +67,15 @@ AfficherImageCarrousel();
   function ajouterUneImageDansCaroussel(elt) {
     // On enlève 12 caractères au nom de fichier pour charger la version originale
     //Et pas les 150x150.jpg
-
+    //SI LES NOMS SONT COUPÉS, LE CARROUSEL N'AURA PAS D'IMAGES DANS LE CONTEXTE
+    // D'UNE GALERIE FAITE AVEC UN WIDGET
+/*
     let elImg = `<img src=${
       elt.src.substr(0, elt.src.length - 12) + ".jpg"
-    } class="carrousel__img" alt="">`;
+    } class="carrousel__img" alt="">`;*/
+
+    let elImg = `<img src=${elt.src} class="carrousel__img" alt="">`;
+
 
     carrouselFigure.insertAdjacentHTML("beforeend", elImg);
   }
