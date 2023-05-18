@@ -32,7 +32,6 @@ AfficherImageCarrousel();
 
   /**********
    *************************  Pour chaque image de la galerie l'ajouter dans le carrousel */
-
   /* -- boucle qui permet construire le carrousel */
   for (const elt of galerieImg) {
     elt.dataset.index = position;
